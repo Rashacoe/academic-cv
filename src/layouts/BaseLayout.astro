@@ -1,0 +1,77 @@
+---
+import '@styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Academic CV & Portfolio',
+  description = 'Academic Curriculum Vitae and Research Portfolio',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts Preconnect & Stylesheets (English & Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Theme initialization script (prevents theme flicker / FOUC) -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Language initialization script (prevents language flicker / FLOC)
+      const savedLang = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('site_lang')) {
+          return localStorage.getItem('site_lang');
+        }
+        return 'en';
+      })();
+
+      if (savedLang === 'ar') {
+        document.documentElement.setAttribute('lang', 'ar');
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        document.documentElement.setAttribute('lang', 'en');
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased selection:bg-academic-navy-200 selection:text-academic-navy-900 dark:bg-academic-navy-950 dark:text-slate-100 dark:selection:bg-academic-navy-700 dark:selection:text-white">
+    <div class="relative flex min-h-screen flex-col">
+      <main id="main-content" class="flex-1">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

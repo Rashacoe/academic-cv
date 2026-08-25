@@ -1,0 +1,134 @@
+---
+import { cvData } from '../data/cvData';
+const { awards, service, keynotes } = cvData;
+---
+
+<section id="awards" class="py-14 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
+  <div class="mx-auto max-w-academic px-4 sm:px-6">
+    
+    <!-- Section Header -->
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      </span>
+      <div>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white" data-i18n-en="Awards, Editorial & Academic Service" data-i18n-ar="الجوائز، وهيئات التحرير، والخدمة الأكاديمية">
+          Awards, Editorial & Academic Service
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400" data-i18n-en="Scholarly honors, journal editorships, conference track chairing, and invited keynotes" data-i18n-ar="التكريمات العلمية، ورئاسة تحرير المجلات، وإدارة مسارات المؤتمرات، والكلمات الافتتاحية">
+          Scholarly honors, journal editorships, conference track chairing, and invited keynotes
+        </p>
+      </div>
+    </div>
+
+    <!-- 3-Column Layout: Awards | Editorial & Service | Keynotes -->
+    <div class="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
+      
+      <!-- Honors & Awards (Col 1-4) -->
+      <div class="lg:col-span-4">
+        <h3 class="flex items-center gap-2 font-serif text-lg font-bold text-slate-900 dark:text-white">
+          <svg class="h-4 w-4 text-academic-gold-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span data-i18n-en="Honors & Recognitions" data-i18n-ar="الجوائز والأوسمة التقديرية">Honors & Recognitions</span>
+        </h3>
+
+        <div class="mt-4 space-y-4">
+          {awards.map((aw) => (
+            <div class="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+              <div class="flex items-center justify-between gap-1">
+                <span class="rounded bg-amber-50 px-2 py-0.5 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
+                  {aw.year}
+                </span>
+                <span class="text-xs text-slate-400 font-medium" data-i18n-en={aw.organization.en} data-i18n-ar={aw.organization.ar}>
+                  {aw.organization.en}
+                </span>
+              </div>
+              <h4 class="mt-2 font-serif text-sm font-bold text-slate-900 dark:text-white" data-i18n-en={aw.title.en} data-i18n-ar={aw.title.ar}>
+                {aw.title.en}
+              </h4>
+              <p class="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n-en={aw.description.en} data-i18n-ar={aw.description.ar}>
+                {aw.description.en}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Editorial & Professional Service (Col 5-8) -->
+      <div class="lg:col-span-4">
+        <h3 class="flex items-center gap-2 font-serif text-lg font-bold text-slate-900 dark:text-white">
+          <svg class="h-4 w-4 text-academic-navy-600 dark:text-academic-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+          <span data-i18n-en="Editorial Leadership" data-i18n-ar="هيئات التحرير والمجلات">Editorial Leadership</span>
+        </h3>
+
+        <div class="mt-4 space-y-3">
+          {service.editorial.map((ed) => (
+            <div class="rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+              <span class="rounded bg-academic-navy-50 px-2 py-0.5 text-xs font-semibold text-academic-navy-800 dark:bg-academic-navy-950 dark:text-academic-gold-400" data-i18n-en={ed.role.en} data-i18n-ar={ed.role.ar}>
+                {ed.role.en}
+              </span>
+              <h4 class="mt-1.5 font-serif text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                {ed.journal}
+              </h4>
+              <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                {ed.period}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Conference Leadership Section -->
+        <h4 class="mt-6 font-serif text-sm font-bold text-slate-900 dark:text-white" data-i18n-en="Conference Track Leadership" data-i18n-ar="إدارة مسارات المؤتمرات الدولية">
+          Conference Track Leadership
+        </h4>
+        <div class="mt-2 space-y-2">
+          {service.conferences.map((conf) => (
+            <div class="flex items-start justify-between gap-2 rounded-lg border border-slate-100 bg-slate-50 p-2.5 text-xs dark:border-slate-800 dark:bg-slate-900/60">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-slate-100" data-i18n-en={conf.role.en} data-i18n-ar={conf.role.ar}>{conf.role.en}</span>
+                <p class="text-slate-600 dark:text-slate-400">{conf.conference}</p>
+              </div>
+              <span class="font-mono text-slate-400">{conf.year}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Keynotes & Invited Addresses (Col 9-12) -->
+      <div class="lg:col-span-4">
+        <h3 class="flex items-center gap-2 font-serif text-lg font-bold text-slate-900 dark:text-white">
+          <svg class="h-4 w-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
+          </svg>
+          <span data-i18n-en="Keynotes & Plenaries" data-i18n-ar="الكلمات الافتتاحية والمحاضرات العامة">Keynotes & Plenaries</span>
+        </h3>
+
+        <div class="mt-4 space-y-4">
+          {keynotes.map((kn) => (
+            <div class="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+              <div class="flex items-center justify-between gap-1">
+                <span class="rounded bg-purple-50 px-2 py-0.5 text-xs font-bold text-purple-800 dark:bg-purple-950/60 dark:text-purple-300" data-i18n-en={kn.type.en} data-i18n-ar={kn.type.ar}>
+                  {kn.type.en}
+                </span>
+                <span class="font-mono text-xs text-slate-400">{kn.year}</span>
+              </div>
+              <h4 class="mt-2 font-serif text-xs sm:text-sm font-bold text-slate-900 dark:text-white" data-i18n-en={kn.title.en} data-i18n-ar={kn.title.ar}>
+                "{kn.title.en}"
+              </h4>
+              <p class="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                <span data-i18n-en={kn.event.en} data-i18n-ar={kn.event.ar}>{kn.event.en}</span>
+                <span class="block text-slate-400" data-i18n-en={kn.location.en} data-i18n-ar={kn.location.ar}>📍 {kn.location.en}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

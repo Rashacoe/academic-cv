@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+import Hero from '@components/Hero.astro';
+import AcademicHighlights from '@components/AcademicHighlights.astro';
+import AboutSection from '@components/AboutSection.astro';
+import ResearchSection from '@components/ResearchSection.astro';
+import AcademicQualitySection from '@components/AcademicQualitySection.astro';
+import TeachingSection from '@components/TeachingSection.astro';
+import ProfessionalActivities from '@components/ProfessionalActivities.astro';
+import SupervisedProjects from '@components/SupervisedProjects.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Footer from '@components/Footer.astro';
+import { personalProfile } from '../data/profile';
+
+const pageTitle = `${personalProfile.name.en} | ${personalProfile.title.en} - ${personalProfile.institution.en}`;
+const pageDescription = `${personalProfile.name.en}, ${personalProfile.title.en} at ${personalProfile.department.en}, ${personalProfile.institution.en}. Academic profile, quality assurance consultancy, research publications, teaching, and administrative leadership.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Top Navigation Bar -->
+  <Navbar />
+
+  <!-- Academic Hero & Executive Introduction -->
+  <Hero />
+
+  <!-- Verified Academic Highlights -->
+  <AcademicHighlights />
+
+  <!-- Academic Profile, Education & Leadership Roles -->
+  <AboutSection />
+
+  <!-- Research Interests & Scientific Publications -->
+  <ResearchSection />
+
+  <!-- Dedicated Academic Quality & Accreditation Section -->
+  <AcademicQualitySection />
+
+  <!-- University Teaching Portfolio (Postgraduate & Undergraduate) -->
+  <TeachingSection />
+
+  <!-- Professional Activities: Conferences, Workshops & Certifications -->
+  <ProfessionalActivities />
+
+  <!-- Supervised Graduation Projects & Innovation Awards -->
+  <SupervisedProjects />
+
+  <!-- Contact & Scholarly Correspondence -->
+  <ContactSection />
+
+  <!-- Professional Academic Footer -->
+  <Footer />
+
+  <!-- Client-side Interactions -->
+  <script>
+    import { initAcademicInteractions } from '../scripts/main';
+    initAcademicInteractions();
+  </script>
+</BaseLayout>

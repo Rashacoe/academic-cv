@@ -1,0 +1,120 @@
+---
+import { qualityInitiatives } from '../data/quality';
+import { uiTranslations } from '../data/translations';
+
+const t = uiTranslations.quality;
+---
+
+<section id="quality" class="py-16 sm:py-20 border-b border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header with Distinctive Academic Quality Badge -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-academic-navy-900 text-white dark:bg-academic-gold-500 dark:text-slate-950 shadow-sm">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </span>
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <span class="lang-en">{t.sectionTitle.en}</span>
+            <span class="lang-ar">{t.sectionTitle.ar}</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <span class="lang-en">{t.sectionSubtitle.en}</span>
+            <span class="lang-ar">{t.sectionSubtitle.ar}</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 rounded-full border border-academic-navy-200 bg-academic-navy-50/80 px-3.5 py-1 text-xs font-semibold text-academic-navy-900 dark:border-slate-800 dark:bg-slate-900 dark:text-academic-gold-400">
+        <span class="h-2 w-2 rounded-full bg-academic-navy-700 dark:bg-academic-gold-400"></span>
+        <span class="lang-en">Quality Assurance Consultant</span>
+        <span class="lang-ar">استشارية ضمان الجودة والاعتماد</span>
+      </div>
+    </div>
+
+    <!-- Quality Initiatives Cards -->
+    <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
+      
+      <!-- Highlighted Lead Framework (Guideline & System - 7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <span class="lang-en">Institutional Assessment Guidelines & Evaluation Systems</span>
+          <span class="lang-ar">الأدلة المؤسسية للتقييم والنظم المحوسبة لتحليل الاختبارات</span>
+        </div>
+
+        {qualityInitiatives.slice(0, 2).map((item) => (
+          <div class="rounded-2xl border-2 border-academic-navy-100 bg-gradient-to-br from-slate-50/90 to-white p-6 shadow-sm transition hover:border-academic-navy-300 dark:border-slate-800 dark:from-slate-900/80 dark:to-slate-900/40">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <span class="rounded bg-academic-navy-900 px-2.5 py-0.5 text-xs font-bold text-white dark:bg-slate-800 dark:text-academic-gold-400">
+                <span class="lang-en">{item.category === 'guideline' ? 'Institutional Guideline' : 'Assessment System'}</span>
+                <span class="lang-ar">{item.category === 'guideline' ? 'دليل أكاديمي مؤسسي' : 'نظام تقييم محوسب'}</span>
+              </span>
+              <span class="font-mono text-xs font-bold text-slate-500 dark:text-slate-400">
+                {item.year}
+              </span>
+            </div>
+
+            <h3 class="mt-3 font-serif text-lg font-bold text-slate-900 dark:text-white leading-snug">
+              <span class="lang-en">{item.title.en}</span>
+              <span class="lang-ar">{item.title.ar || item.title.en}</span>
+            </h3>
+
+            <p class="mt-1 text-xs font-semibold text-academic-navy-700 dark:text-academic-gold-400">
+              <span class="lang-en">{item.organization.en}</span>
+              <span class="lang-ar">{item.organization.ar || item.organization.en}</span>
+            </p>
+
+            <p class="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <span class="lang-en">{item.description.en}</span>
+              <span class="lang-ar">{item.description.ar || item.description.en}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Curriculum & Program Specifications (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <span class="lang-en">Academic Program Specifications & ABET Mapping</span>
+          <span class="lang-ar">توصيف البرامج الأكاديمية ومواءمة معايير ABET</span>
+        </div>
+
+        <div class="space-y-4">
+          {qualityInitiatives.slice(2).map((item) => (
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/60">
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                  <span class="lang-en">Program Specification</span>
+                  <span class="lang-ar">توصيف برنامج أكاديمي</span>
+                </span>
+                <span class="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  {item.year}
+                </span>
+              </div>
+
+              <h4 class="mt-2 font-serif text-base font-bold text-slate-900 dark:text-white leading-snug">
+                <span class="lang-en">{item.title.en}</span>
+                <span class="lang-ar">{item.title.ar || item.title.en}</span>
+              </h4>
+
+              <p class="text-xs font-medium text-slate-600 dark:text-slate-400">
+                <span class="lang-en">{item.organization.en}</span>
+                <span class="lang-ar">{item.organization.ar || item.organization.en}</span>
+              </p>
+
+              <p class="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-300">
+                <span class="lang-en">{item.description.en}</span>
+                <span class="lang-ar">{item.description.ar || item.description.en}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

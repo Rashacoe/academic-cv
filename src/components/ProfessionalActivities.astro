@@ -1,0 +1,172 @@
+---
+import {
+  workshopsDelivered,
+  conferenceParticipations,
+  professionalCertifications,
+} from '../data/activities';
+import { uiTranslations } from '../data/translations';
+
+const t = uiTranslations.activities;
+---
+
+<section id="activities" class="py-16 sm:py-20 border-b border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-academic-navy-100 text-academic-navy-900 dark:bg-slate-800 dark:text-academic-gold-400">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+        </svg>
+      </span>
+      <div>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <span class="lang-en">{t.sectionTitle.en}</span>
+          <span class="lang-ar">{t.sectionTitle.ar}</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <span class="lang-en">{t.sectionSubtitle.en}</span>
+          <span class="lang-ar">{t.sectionSubtitle.ar}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 3-Column Layout: Workshops & Lectures | Conferences | Certifications & Continuous Professional Development -->
+    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
+      
+      <!-- 1. Workshops & Lectures Delivered (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-200 pb-2 dark:border-slate-800">
+          <svg class="h-4 w-4 text-academic-navy-700 dark:text-academic-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+          </svg>
+          <h3 class="font-serif text-base font-bold text-slate-900 dark:text-white">
+            <span class="lang-en">{t.workshopsTitle.en}</span>
+            <span class="lang-ar">{t.workshopsTitle.ar}</span>
+          </h3>
+        </div>
+
+        <div class="space-y-3.5">
+          {workshopsDelivered.map((ws) => (
+            <div class="rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/60">
+              <div class="flex items-center justify-between gap-1">
+                <span class="rounded bg-academic-navy-100 px-2 py-0.5 text-[11px] font-bold text-academic-navy-900 dark:bg-slate-800 dark:text-academic-gold-400">
+                  <span class="lang-en">{ws.type.en}</span>
+                  <span class="lang-ar">{ws.type.ar || ws.type.en}</span>
+                </span>
+                <span class="font-mono text-xs text-slate-500 dark:text-slate-400">
+                  {ws.date}
+                </span>
+              </div>
+              <h4 class="mt-2 font-serif text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                "<span class="lang-en">{ws.title.en}</span><span class="lang-ar">{ws.title.ar || ws.title.en}</span>"
+              </h4>
+              <p class="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                <span class="lang-en">{ws.venue.en}</span>
+                <span class="lang-ar">{ws.venue.ar || ws.venue.en}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 2. Conferences & Scientific Participation (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-200 pb-2 dark:border-slate-800">
+          <svg class="h-4 w-4 text-academic-navy-700 dark:text-academic-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          <h3 class="font-serif text-base font-bold text-slate-900 dark:text-white">
+            <span class="lang-en">{t.conferencesTitle.en}</span>
+            <span class="lang-ar">{t.conferencesTitle.ar}</span>
+          </h3>
+        </div>
+
+        <div class="space-y-3.5">
+          {conferenceParticipations.map((conf) => (
+            <div class="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm transition hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/60">
+              <div class="flex items-center justify-between gap-1">
+                <span class="rounded bg-slate-900 px-2 py-0.5 text-[11px] font-bold text-white dark:bg-slate-800 dark:text-academic-gold-400">
+                  {conf.name}
+                </span>
+                <span class="font-mono text-xs font-semibold text-slate-500">{conf.year}</span>
+              </div>
+              <h4 class="mt-2 font-serif text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                <span class="lang-en">{conf.title.en}</span>
+                <span class="lang-ar">{conf.title.ar || conf.title.en}</span>
+              </h4>
+              {conf.location && (
+                <p class="mt-1 text-xs font-medium text-slate-700 dark:text-slate-300">
+                  <span class="lang-en">{conf.location.en}</span>
+                  <span class="lang-ar">{conf.location.ar || conf.location.en}</span>
+                </p>
+              )}
+              <p class="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                <span class="lang-en">{conf.details.en}</span>
+                <span class="lang-ar">{conf.details.ar || conf.details.en}</span>
+              </p>
+
+              {conf.presentations?.en && conf.presentations.en.length > 0 && (
+                <div class="mt-2.5 rounded-lg border border-slate-100 bg-slate-50 p-2.5 dark:border-slate-800/80 dark:bg-slate-900/90">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span class="lang-en">{t.presentedResearch.en}</span>
+                    <span class="lang-ar">{t.presentedResearch.ar}</span>
+                  </span>
+                  <ul class="mt-1 space-y-1 text-xs text-slate-700 dark:text-slate-300 list-disc list-inside">
+                    <div class="lang-en space-y-1">
+                      {conf.presentations.en.map((pres) => (
+                        <li>{pres}</li>
+                      ))}
+                    </div>
+                    <div class="lang-ar space-y-1">
+                      {(conf.presentations.ar || conf.presentations.en).map((pres) => (
+                        <li>{pres}</li>
+                      ))}
+                    </div>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 3. Certifications & Continuous Professional Development (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-200 pb-2 dark:border-slate-800">
+          <svg class="h-4 w-4 text-academic-navy-700 dark:text-academic-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          <h3 class="font-serif text-base font-bold text-slate-900 dark:text-white">
+            <span class="lang-en">{t.certificationsTitle.en}</span>
+            <span class="lang-ar">{t.certificationsTitle.ar}</span>
+          </h3>
+        </div>
+
+        <div class="space-y-3.5">
+          {professionalCertifications.map((cert) => (
+            <div class="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/40">
+              <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                <span class="lang-en">{cert.title.en}</span>
+                <span class="lang-ar">{cert.title.ar || cert.title.en}</span>
+              </h4>
+              {cert.issuer?.en && (
+                <p class="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  <span class="lang-en">{cert.issuer.en}</span>
+                  <span class="lang-ar">{cert.issuer.ar || cert.issuer.en}</span>
+                </p>
+              )}
+              {cert.year && (
+                <div class="mt-1.5 flex items-center gap-1 font-mono text-[10px] font-semibold text-academic-navy-800 dark:text-academic-gold-400">
+                  <span>🗓 {cert.year}</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

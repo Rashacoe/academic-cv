@@ -1,0 +1,234 @@
+---
+import { researchInterests } from '../data/research';
+import { publicationsList } from '../data/publications';
+import { uiTranslations } from '../data/translations';
+
+const t = uiTranslations.research;
+---
+
+<section id="research" class="py-16 sm:py-20 border-b border-slate-200/80 bg-slate-50/60 dark:border-slate-800/80 dark:bg-slate-900/30">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-academic-navy-100 text-academic-navy-900 dark:bg-slate-800 dark:text-academic-gold-400">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+      </span>
+      <div>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <span class="lang-en">{t.sectionTitle.en}</span>
+          <span class="lang-ar">{t.sectionTitle.ar}</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <span class="lang-en">{t.sectionSubtitle.en}</span>
+          <span class="lang-ar">{t.sectionSubtitle.ar}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 1. Research Interests Grid (7 Core Domains from CV) -->
+    <div class="mt-10">
+      <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white mb-4">
+        <span class="lang-en">{t.specializedAreas.en}</span>
+        <span class="lang-ar">{t.specializedAreas.ar}</span>
+      </h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {researchInterests.map((interest) => (
+          <div class="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-academic-navy-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-academic-navy-50 text-academic-navy-800 dark:bg-slate-800 dark:text-academic-gold-400 mb-3">
+              {interest.icon === 'server' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              )}
+              {interest.icon === 'chart-bar' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+              {interest.icon === 'code' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              )}
+              {interest.icon === 'brain' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+              {interest.icon === 'wifi' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                </svg>
+              )}
+              {interest.icon === 'document-search' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )}
+              {interest.icon === 'database' && (
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              )}
+            </div>
+            <h4 class="font-serif text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+              <span class="lang-en">{interest.title.en}</span>
+              <span class="lang-ar">{interest.title.ar || interest.title.en}</span>
+            </h4>
+            <p class="mt-1.5 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+              <span class="lang-en">{interest.description.en}</span>
+              <span class="lang-ar">{interest.description.ar || interest.description.en}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 2. Peer-Reviewed Publications Interface (11 Verified Papers from CV) -->
+    <div class="mt-14">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-white">
+            <span class="lang-en">{t.publicationsTitle.en}</span>
+            <span class="lang-ar">{t.publicationsTitle.ar}</span>
+          </h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            <span class="lang-en">{t.publicationsSubtitle.en} ({publicationsList.length} publications)</span>
+            <span class="lang-ar">{t.publicationsSubtitle.ar} ({publicationsList.length} أبحاث محكمة)</span>
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="flex items-center rounded-xl border border-slate-200 bg-white p-1 dark:border-slate-800 dark:bg-slate-900">
+            <button
+              type="button"
+              data-pub-filter="all"
+              class="pub-tab-btn active-tab rounded-lg px-3 py-1 text-xs font-semibold bg-academic-navy-900 text-white dark:bg-slate-800"
+            >
+              <span class="lang-en">{t.filterAll.en} ({publicationsList.length})</span>
+              <span class="lang-ar">{t.filterAll.ar} ({publicationsList.length})</span>
+            </button>
+            <button
+              type="button"
+              data-pub-filter="journal"
+              class="pub-tab-btn rounded-lg px-3 py-1 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            >
+              <span class="lang-en">{t.filterJournals.en} ({publicationsList.filter(p => p.type === 'journal').length})</span>
+              <span class="lang-ar">{t.filterJournals.ar} ({publicationsList.filter(p => p.type === 'journal').length})</span>
+            </button>
+            <button
+              type="button"
+              data-pub-filter="conference"
+              class="pub-tab-btn rounded-lg px-3 py-1 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            >
+              <span class="lang-en">{t.filterConferences.en} ({publicationsList.filter(p => p.type === 'conference').length})</span>
+              <span class="lang-ar">{t.filterConferences.ar} ({publicationsList.filter(p => p.type === 'conference').length})</span>
+            </button>
+          </div>
+
+          <!-- Live Search Bar -->
+          <div class="relative w-full sm:w-64">
+            <input
+              id="pub-search-input"
+              type="search"
+              placeholder="Search publications..."
+              data-placeholder-en="Search publications..."
+              data-placeholder-ar="ابحث في الأبحاث والمنشورات..."
+              class="w-full rounded-xl border border-slate-200 bg-white py-1.5 pl-3 pr-8 text-xs placeholder-slate-400 focus:border-academic-navy-500 focus:outline-none focus:ring-1 focus:ring-academic-navy-500 dark:border-slate-800 dark:bg-slate-900 dark:text-white rtl:pl-8 rtl:pr-3"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Publication Cards List -->
+      <div id="publications-container" class="mt-6 space-y-4">
+        {publicationsList.map((pub) => (
+          <article
+            class="publication-item group rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/60"
+            data-type={pub.type}
+            data-title={pub.title.en.toLowerCase()}
+            data-authors={pub.authors.join(' ').toLowerCase()}
+            data-venue={pub.venue.toLowerCase()}
+            data-year={pub.year}
+          >
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class={`rounded px-2 py-0.5 text-xs font-bold ${pub.type === 'journal' ? 'bg-academic-navy-100 text-academic-navy-900 dark:bg-academic-navy-950 dark:text-academic-gold-400' : 'bg-purple-100 text-purple-900 dark:bg-purple-950 dark:text-purple-300'}`}>
+                    <span class="lang-en">{pub.type === 'journal' ? t.journalArticle.en : t.conferencePaper.en}</span>
+                    <span class="lang-ar">{pub.type === 'journal' ? t.journalArticle.ar : t.conferencePaper.ar}</span>
+                  </span>
+                  <span class="font-mono text-xs text-slate-500 dark:text-slate-400">
+                    {pub.venueShort}
+                  </span>
+                </div>
+                <span class="font-mono text-xs font-semibold text-slate-600 dark:text-slate-300">
+                  {pub.year}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h4 class="font-serif text-base font-bold text-slate-900 group-hover:text-academic-navy-700 dark:text-white dark:group-hover:text-academic-gold-400">
+                {pub.title.en}
+              </h4>
+
+              <!-- Authors List with Professor Highlight -->
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                {pub.authors.map((author, aIdx) => (
+                  <span>
+                    {author.includes('Bin-Thalab') || author.includes('Thalab') ? (
+                      <strong class="font-semibold text-academic-navy-900 underline decoration-academic-gold-500 decoration-2 dark:text-white">
+                        {author}
+                      </strong>
+                    ) : (
+                      author
+                    )}
+                    {aIdx < pub.authors.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+              </p>
+
+              <!-- Venue Details & Volume/Issue/Pages -->
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                <span class="italic font-medium text-slate-700 dark:text-slate-300">{pub.venue}</span>
+                {pub.volume && <span>, {pub.volume}</span>}
+                {pub.issue && <span>({pub.issue})</span>}
+                {pub.pages && <span>, {pub.pages.startsWith('e') ? pub.pages : `pp. ${pub.pages}`}</span>}
+              </p>
+
+              <!-- Bottom: DOI Link if explicitly provided -->
+              {pub.doi && pub.doiUrl && (
+                <div class="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-2.5 dark:border-slate-800">
+                  <a
+                    href={pub.doiUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  >
+                    <svg class="h-3.5 w-3.5 text-academic-navy-700 dark:text-academic-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span>DOI: {pub.doi}</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-pub-results" class="hidden rounded-2xl border border-dashed border-slate-300 py-10 text-center dark:border-slate-800">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          <span class="lang-en">{t.noResults.en}</span>
+          <span class="lang-ar">{t.noResults.ar}</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
