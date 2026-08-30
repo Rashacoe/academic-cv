@@ -1,6 +1,11 @@
 // Interactive Client Logic for Prof. Dr. Rasha Abdulaziz Bin-Thalab Academic Website
 
+let isInitialized = false;
+
 export function initAcademicInteractions() {
+  if (isInitialized) return;
+  isInitialized = true;
+
   // 1. Language Toggle (Full English / Arabic System)
   const langToggleBtn = document.getElementById('lang-toggle-btn');
   const searchInput = document.getElementById('pub-search-input') as HTMLInputElement | null;
@@ -42,27 +47,38 @@ export function initAcademicInteractions() {
   const sunIcon = document.getElementById('theme-icon-sun');
   const moonIcon = document.getElementById('theme-icon-moon');
 
-  function updateThemeIcons() {
-    const isDark = document.documentElement.classList.contains('dark');
-    if (sunIcon && moonIcon) {
-      if (isDark) {
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-      } else {
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
+  function applyTheme(isDark: boolean) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      if (sunIcon) sunIcon.classList.remove('hidden');
+      if (moonIcon) moonIcon.classList.add('hidden');
+      if (themeToggleBtn) {
+        themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+        themeToggleBtn.setAttribute('title', 'Switch to light mode');
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      if (sunIcon) sunIcon.classList.add('hidden');
+      if (moonIcon) moonIcon.classList.remove('hidden');
+      if (themeToggleBtn) {
+        themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+        themeToggleBtn.setAttribute('title', 'Switch to dark mode');
       }
     }
   }
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeIcons();
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isCurrentlyDark);
     });
   }
-  updateThemeIcons();
+
+  // Initial sync with DOM state
+  const isInitialDark = document.documentElement.classList.contains('dark');
+  applyTheme(isInitialDark);
 
   // 3. Mobile Navigation Menu Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -145,7 +161,7 @@ export function initAcademicInteractions() {
 // Auto-initialize on DOM load
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAcademicInteractions);
+    document.addEventListener('DOMContentLoaded', () => initAcademicInteractions());
   } else {
     initAcademicInteractions();
   }
